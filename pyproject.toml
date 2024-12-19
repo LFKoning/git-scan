@@ -1,0 +1,66 @@
+[project]
+name = "git-scan"
+dynamic = 0.0.1
+
+# Optional descriptive information for the project.
+description = "Git repository scanner"
+keywords = ["git", "repository", "scanning", "data"]
+readme = "README.md"
+
+# Fill in authors and maintainers here.
+authors = [
+    {name = "Lukas Koning", email = "lfkoning@gmail.com"},
+]
+maintainers = [
+    {name = "Lukas Koning", email = "lfkoning@gmail.com"},
+]
+
+# Optional classifications.
+# See: https://pypi.org/classifiers/
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+# Python version and dependencies
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+# Regular development dependencies.
+dev = [
+    "isort >= 5.13",
+    "black >= 24.2",
+    "pylint >= 3.1",
+]
+
+[project.urls]
+# URL to the GitHub repository.
+repository = "https://github.com/LFKoning/git-scan"
+
+[build-system]
+# Using setuptools as build backend.
+requires = ["setuptools >= 75.6.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+# Place package source code in src folder.
+where = ["src"]
+
+[project.scripts]
+git-scan = "git_scan.git_scan:main"
+
+# Pylint settings.
+# To generate an example: `pylint --generate-toml-config > pylint_example.toml`
+
+[tool.pylint.main]
+# Set number of concurrent jobs, use 0 to autodetect.
+jobs=0
+
+[tool.pylint.format]
+# Maximum characters on a single line (same as black).
+max-line-length = 88
