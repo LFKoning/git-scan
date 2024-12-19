@@ -6,7 +6,7 @@ import pathlib
 import subprocess
 
 # File extensions that might contain data.
-EXTENSIONS = ["csv", "ipynb", "pbix"]
+EXTENSIONS = ["csv", "ipynb", "parquet", "pbix", "tsv", "xls", "xlsx", "xlsb", "xml"]
 
 logger = logging.getLogger("GitScanner")
 
@@ -67,7 +67,7 @@ def get_trees(repo_path: pathlib.Path) -> list:
             stderr=git_pipe,
             universal_newlines=True,
             check=True,
-            cwd=repo_path
+            cwd=repo_path,
         )
     except subprocess.CalledProcessError as error:
         raise RuntimeError("Cannot list trees objects form the repository") from error
@@ -86,9 +86,9 @@ def main():
     """Main program routine."""
     args = get_arguments()
     logging.basicConfig(
-        level = args.loglevel.upper(),
-        format = "%(asctime)s - %(levelname)-8s - %(name)-20s %(message)-.150s",
-        datefmt="%d-%m-%Y %H:%M:%S"
+        level=args.loglevel.upper(),
+        format="%(asctime)s - %(levelname)-8s - %(name)-20s %(message)-.150s",
+        datefmt="%d-%m-%Y %H:%M:%S",
     )
     logger.setLevel(args.loglevel.upper())
 
@@ -113,7 +113,6 @@ def main():
     print("-" * 21)
     for data_file in data_files:
         print(data_file)
-
 
 
 if __name__ == "__main__":
