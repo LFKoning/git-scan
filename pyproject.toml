@@ -1,6 +1,6 @@
 [project]
 name = "git-scan"
-dynamic = 0.0.1
+version = "0.0.1"
 
 # Optional descriptive information for the project.
 description = "Git repository scanner"
