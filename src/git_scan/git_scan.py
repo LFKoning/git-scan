@@ -73,7 +73,7 @@ def scan_files(tree_hash: str, repo_path: pathlib.Path, sub_path: pathlib.Path) 
     # Recursively handle trees for subfolders.
     data_files = []
     for line in output.split("\n"):
-        _, otype, ohash, oname = line.split()
+        _, otype, ohash, oname = line.split(maxsplit=3)
 
         # Handle subtree.
         if otype == "tree":
